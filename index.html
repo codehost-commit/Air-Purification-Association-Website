@@ -3,418 +3,461 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Air Purification Association — Cleaner Indoor Air for Every Community</title>
-<meta name="description" content="The Air Purification Association is an unincorporated nonprofit association dedicated to cleaner indoor environments. We have cleaned 15.83 billion cubic feet of air." />
+<title>Air Purification Association | Cleaner Indoor Air for Every Community</title>
+<meta name="description" content="An unincorporated nonprofit association putting professional grade air filtration into classrooms, homes, shelters and workshops. 15.83 billion cubic feet of air cleaned." />
 <link rel="icon" type="image/png" sizes="64x64" href="Media/logo_assets/favicon_64.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="Media/logo_assets/favicon_32.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
 <style>
-/* ===================== DESIGN TOKENS ===================== */
-:root{
-  --air-blue:#0B63B6;
-  --sky-blue:#2AB7E6;
-  --leaf-green:#1E8E3E;
-  --eco-green:#79C843;
-  --mint:#A8E063;
-  --slate:#1f2a37;
-  --slate-soft:#5f6b7a;
-  --air-white:#f7fbff;
-  --glass-bg:rgba(255,255,255,0.55);
-  --glass-bg-strong:rgba(255,255,255,0.72);
-  --glass-border:rgba(255,255,255,0.65);
-  --glass-glow:rgba(42,183,230,0.35);
-  --shadow-soft:0 10px 40px rgba(11,99,182,0.12);
-  --shadow-deep:0 24px 70px rgba(11,99,182,0.18);
-  --radius:22px;
-  --radius-lg:30px;
-  --ease:cubic-bezier(.22,1,.36,1);
-  --maxw:1200px;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',Arial,Helvetica,sans-serif;
-  color:var(--slate);
-  background:var(--air-white);
-  line-height:1.65;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-/* animated aurora background */
-.bg-aura{position:fixed;inset:0;z-index:-2;overflow:hidden;}
-.bg-aura span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite;}
-.bg-aura span:nth-child(1){width:520px;height:520px;background:radial-gradient(circle,var(--sky-blue),transparent 70%);top:-120px;left:-100px;}
-.bg-aura span:nth-child(2){width:480px;height:480px;background:radial-gradient(circle,var(--mint),transparent 70%);top:30%;right:-140px;animation-delay:-6s;}
-.bg-aura span:nth-child(3){width:560px;height:560px;background:radial-gradient(circle,var(--air-blue),transparent 72%);bottom:-160px;left:25%;animation-delay:-12s;opacity:.32;}
-.bg-aura span:nth-child(4){width:380px;height:380px;background:radial-gradient(circle,var(--eco-green),transparent 70%);bottom:10%;right:20%;animation-delay:-3s;opacity:.4;}
-@keyframes drift{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(40px,-30px) scale(1.08);}66%{transform:translate(-30px,40px) scale(.95);}}
-.bg-grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(11,99,182,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(11,99,182,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 80%);}
+/* ---------- HERO (dark, dramatic) ---------- */
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 120% at 20% 0%,#10324f 0%,#0c1b2a 45%,#081320 100%);color:#eaf4fb;padding:144px 0 150px;text-align:center;}
+#airCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+.hero-glowA{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(42,183,230,.5),transparent 70%);top:-160px;left:-120px;filter:blur(40px);z-index:0;}
+.hero-glowB{position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(121,200,67,.35),transparent 70%);bottom:-160px;right:-100px;filter:blur(40px);z-index:0;}
+.hero .container{position:relative;z-index:2;}
+.hero .eyebrow{color:var(--mint);background:rgba(168,224,99,.12);border-color:rgba(168,224,99,.28);}
+.hero h1{font-size:clamp(2.1rem,5vw,3.4rem);color:#fff;margin:22px auto 0;max-width:760px;line-height:1.08;}
+.hero h1 .grad-text{background:linear-gradient(100deg,#8fe1ff,#a8e063);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero .lead{max-width:600px;margin:18px auto 0;color:#a9c2d4;font-size:1.12rem;}
+.mega-wrap{margin:46px auto 8px;position:relative;display:inline-block;}
+.mega-label{font-family:'Space Grotesk',sans-serif;letter-spacing:.22em;text-transform:uppercase;font-size:.78rem;color:#7fd0ef;margin-bottom:6px;}
+.mega{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(4.2rem,16vw,10rem);line-height:.9;letter-spacing:-.04em;white-space:nowrap;
+  font-variant-numeric:tabular-nums;transition:font-size .25s var(--ease),letter-spacing .25s var(--ease);cursor:default;
+  background:linear-gradient(180deg,#ffffff 0%,#9fe0ff 55%,#79C843 130%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 14px 40px rgba(42,183,230,.35));}
+.mega .b{font-size:.42em;vertical-align:baseline;}
+.mega.expanded{letter-spacing:-.03em;}
+.mega.expanded .b{display:none;}
+.mega-stage{display:flex;align-items:center;justify-content:center;min-height:clamp(3.8rem,15vw,9.2rem);width:100%;}
+.mega-unit{font-family:'Space Grotesk',sans-serif;font-size:1rem;letter-spacing:.16em;text-transform:uppercase;color:#bcd3e3;margin-top:14px;}
+.mega-live{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:.82rem;color:#9bd6a5;}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+/* floating proof chips overlapping next section */
+.proof{position:relative;z-index:5;margin-top:-66px;}
+.proof-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.proof-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;box-shadow:var(--sh-md);text-align:center;}
+.proof-card .pn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.4rem;line-height:1;color:var(--air-blue-d);}
+.proof-card .pl{color:var(--slate);font-size:.95rem;margin-top:8px;font-weight:500;}
 
-.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-section{position:relative;}
-h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:800;}
-h2.section-title{font-size:clamp(1.9rem,4vw,3rem);text-align:center;margin-bottom:14px;}
-.section-sub{text-align:center;color:var(--slate-soft);max-width:640px;margin:0 auto 54px;font-size:1.08rem;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--air-blue);background:rgba(42,183,230,.12);padding:8px 16px;border-radius:999px;border:1px solid rgba(42,183,230,.25);}
-.gradient-text{background:linear-gradient(100deg,var(--air-blue),var(--sky-blue) 45%,var(--leaf-green));-webkit-background-clip:text;background-clip:text;color:transparent;}
+/* ---------- PRODUCT SHOWCASE ---------- */
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
+.prod{border-radius:var(--r-xl);background:var(--paper);border:1px solid var(--line);box-shadow:var(--sh-sm);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease);}
+.prod:hover{box-shadow:var(--sh-lg);}
+.prod-media{position:relative;padding:18px;cursor:pointer;}
+.prod-media .frame{border-radius:var(--r-lg);overflow:hidden;will-change:transform;transition:transform .15s ease-out;}
+.prod-media img{width:100%;height:auto;display:block;}
+.prod-tag{position:absolute;top:30px;left:30px;z-index:3;font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(11,99,182,.85);backdrop-filter:blur(6px);padding:7px 14px;border-radius:999px;}
+.prod-tag.g{background:rgba(30,142,62,.88);}
+.prod-body{padding:6px 30px 32px;}
+.prod-body h3{font-size:1.3rem;margin-bottom:8px;}
+.prod-body p{color:var(--slate-soft);font-size:.97rem;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.chips span{font-size:.78rem;font-weight:600;padding:6px 13px;border-radius:999px;background:rgba(42,183,230,.1);color:var(--air-blue);border:1px solid rgba(42,183,230,.2);}
+.prod.g .chips span{background:rgba(121,200,67,.13);color:var(--leaf);border-color:rgba(121,200,67,.24);}
 
-/* ===================== GLASS PRIMITIVE ===================== */
-.glass{
-  background:var(--glass-bg);
-  backdrop-filter:blur(18px) saturate(150%);
-  -webkit-backdrop-filter:blur(18px) saturate(150%);
-  border:1px solid var(--glass-border);
-  box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.7);
-  border-radius:var(--radius);
-}
+/* ---------- TESTIMONIALS / SOCIAL ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.quote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:30px;backdrop-filter:blur(10px);}
+.quote .mark{font-family:'Space Grotesk',sans-serif;font-size:2.6rem;line-height:0;color:var(--sky);height:18px;display:block;}
+.quote p{color:#cfe0ed;font-size:1rem;margin:18px 0 22px;}
+.quote .who{display:flex;align-items:center;gap:12px;}
+.quote .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;background:var(--grad-cool);}
+.quote .who b{color:#fff;font-size:.92rem;display:block;font-weight:600;}
+.quote .who small{color:#8fa6b8;font-size:.82rem;}
+.join-band{margin-top:56px;border-radius:var(--r-xl);padding:46px;background:linear-gradient(120deg,var(--leaf),var(--eco));display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;}
+.join-band h3{color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);max-width:560px;}
+.join-band p{color:rgba(255,255,255,.9);margin-top:8px;max-width:520px;}
 
-/* ===================== NAVBAR ===================== */
-.navbar{position:sticky;top:0;z-index:100;padding:14px 0;transition:padding .3s var(--ease);}
-.nav-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 20px;border-radius:999px;
-  background:rgba(255,255,255,0.6);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border:1px solid var(--glass-border);
-  box-shadow:0 8px 30px rgba(11,99,182,.12), inset 0 1px 0 rgba(255,255,255,.8);
-}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--slate);font-weight:800;}
-.brand img{height:42px;width:auto;display:block;}
-.brand .brand-text{font-size:1rem;line-height:1.1;}
-.brand .brand-text small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft);}
-.nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
-.nav-links a{
-  position:relative;text-decoration:none;color:var(--slate);font-weight:600;font-size:.94rem;
-  padding:10px 16px;border-radius:999px;transition:all .3s var(--ease);
-}
-.nav-links a::after{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--sky-blue),var(--leaf-green));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);border-radius:2px;}
-.nav-links a:hover{background:rgba(42,183,230,.12);color:var(--air-blue);}
-.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
-.nav-links a.active{color:var(--air-blue);}
-.nav-cta{background:linear-gradient(100deg,var(--air-blue),var(--sky-blue))!important;color:#fff!important;box-shadow:0 8px 22px rgba(42,183,230,.4);}
-.nav-cta::after{display:none;}
-.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.05);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
-.hamburger span{width:26px;height:2.5px;background:var(--slate);border-radius:3px;transition:all .3s var(--ease);}
-.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-
-/* ===================== HERO ===================== */
-.hero{padding:70px 0 90px;text-align:center;}
-.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:900;margin:24px 0 18px;}
-.hero p.lead{max-width:660px;margin:0 auto 40px;font-size:1.18rem;color:var(--slate-soft);}
-.stat-orb{
-  position:relative;max-width:760px;margin:0 auto;padding:46px 30px;
-  border-radius:var(--radius-lg);overflow:hidden;
-  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(225,245,255,.45));
-  backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
-  border:1px solid var(--glass-border);
-  box-shadow:var(--shadow-deep), inset 0 1px 0 rgba(255,255,255,.85);
-}
-.stat-orb::before{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg,transparent,rgba(42,183,230,.25),transparent 30%);animation:spin 8s linear infinite;}
-.stat-orb::after{content:"";position:absolute;inset:2px;border-radius:calc(var(--radius-lg) - 2px);background:linear-gradient(135deg,rgba(255,255,255,.75),rgba(228,246,255,.55));}
-@keyframes spin{to{transform:rotate(360deg);}}
-.stat-orb-inner{position:relative;z-index:2;}
-.stat-label{font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--air-blue);margin-bottom:8px;}
-.counter{font-size:clamp(3rem,9vw,5.6rem);font-weight:900;line-height:1;letter-spacing:-.03em;}
-.counter .unit{display:block;font-size:1.1rem;font-weight:700;letter-spacing:.05em;color:var(--slate-soft);margin-top:14px;text-transform:uppercase;}
-.pulse-ring{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--eco-green);box-shadow:0 0 0 0 rgba(121,200,67,.6);animation:pulse 2s infinite;margin-right:8px;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(121,200,67,.5);}70%{box-shadow:0 0 0 14px rgba(121,200,67,0);}100%{box-shadow:0 0 0 0 rgba(121,200,67,0);}}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px;}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;padding:15px 30px;border-radius:999px;font-size:1rem;transition:all .3s var(--ease);cursor:pointer;border:none;}
-.btn-primary{background:linear-gradient(100deg,var(--air-blue),var(--sky-blue));color:#fff;box-shadow:0 12px 30px rgba(42,183,230,.4);}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(42,183,230,.5);}
-.btn-ghost{background:var(--glass-bg-strong);color:var(--air-blue);border:1px solid var(--glass-border);backdrop-filter:blur(12px);}
-.btn-ghost:hover{transform:translateY(-3px);background:#fff;}
-
-/* ===================== 3D DONATED ITEMS ===================== */
-.tilt-section{padding:90px 0;}
-.tilt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;perspective:1400px;}
-.tilt-card{
-  position:relative;padding:34px 28px;border-radius:var(--radius-lg);
-  transform-style:preserve-3d;transition:transform .15s ease-out, box-shadow .3s var(--ease);
-  background:linear-gradient(150deg,rgba(255,255,255,.78),rgba(230,247,255,.5));
-  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
-  border:1px solid var(--glass-border);
-  box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.8);
-  cursor:pointer;will-change:transform;
-}
-.tilt-card:hover{box-shadow:var(--shadow-deep);}
-.tilt-card .layer{transform:translateZ(40px);}
-.tilt-card .icon-badge{
-  width:66px;height:66px;border-radius:20px;display:grid;place-items:center;margin-bottom:20px;
-  background:linear-gradient(135deg,var(--air-blue),var(--sky-blue));
-  box-shadow:0 12px 26px rgba(42,183,230,.4);transform:translateZ(60px);
-}
-.tilt-card .icon-badge svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;}
-.tilt-card.green .icon-badge{background:linear-gradient(135deg,var(--leaf-green),var(--eco-green));box-shadow:0 12px 26px rgba(121,200,67,.4);}
-.tilt-card h3{font-size:1.25rem;margin-bottom:10px;}
-.tilt-card p{color:var(--slate-soft);font-size:.97rem;}
-.tilt-card .shine{position:absolute;inset:0;border-radius:var(--radius-lg);background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.55),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none;}
-.tilt-card:hover .shine{opacity:1;}
-
-/* ===================== BACKED CLAIMS GRID ===================== */
-.claims{padding:30px 0 100px;}
-.claims-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
-.claim-card{
-  padding:30px 26px;border-radius:var(--radius);position:relative;overflow:hidden;
-  background:var(--glass-bg);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
-  border:1px solid var(--glass-border);box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.7);
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
-}
-.claim-card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--sky-blue),var(--leaf-green));}
-.claim-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-deep);}
-.claim-card .big{font-size:2rem;font-weight:900;line-height:1;margin-bottom:8px;}
-.claim-card .desc{color:var(--slate-soft);font-size:.96rem;}
-.claim-card.featured{grid-column:span 2;background:linear-gradient(135deg,rgba(11,99,182,.92),rgba(42,183,230,.9));color:#fff;border-color:rgba(255,255,255,.3);}
-.claim-card.featured::before{display:none;}
-.claim-card.featured .desc{color:rgba(255,255,255,.9);}
-.claim-card.featured .big{font-size:2.6rem;}
-@media(max-width:640px){.claim-card.featured{grid-column:span 1;}}
-
-/* ===================== REVEAL ANIM ===================== */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
-
-/* ===================== FOOTER ===================== */
-footer{margin-top:40px;padding:60px 0 30px;position:relative;}
-.footer-glass{
-  border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:48px 40px;
-  background:linear-gradient(135deg,rgba(255,255,255,.65),rgba(225,245,255,.45));
-  backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);
-  border:1px solid var(--glass-border);border-bottom:none;box-shadow:var(--shadow-soft);
-}
-.footer-top{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;}
-.footer-brand{max-width:320px;}
-.footer-brand img{height:48px;margin-bottom:16px;}
-.footer-brand p{color:var(--slate-soft);font-size:.95rem;}
-.footer-col h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;color:var(--air-blue);}
-.footer-col a{display:block;text-decoration:none;color:var(--slate);font-size:.95rem;margin-bottom:9px;transition:color .25s;}
-.footer-col a:hover{color:var(--sky-blue);}
-.footer-bottom{text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid rgba(11,99,182,.12);color:var(--slate-soft);font-size:.88rem;}
-.badge-nonprofit{display:inline-block;margin-top:8px;font-size:.78rem;padding:5px 14px;border-radius:999px;background:rgba(121,200,67,.15);color:var(--leaf-green);font-weight:600;border:1px solid rgba(121,200,67,.3);}
-
-/* ===================== RESPONSIVE NAV ===================== */
+/* ---------- AIR QUALITY TEASER ---------- */
+.aq-teaser{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+.aq-visual{position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:300px;background:radial-gradient(120% 120% at 30% 20%,#10324f,#0c1b2a);box-shadow:var(--sh-lg);}
+.aq-visual canvas{position:absolute;inset:0;width:100%;height:100%;}
+.aq-pin{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.6);transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(255,255,255,.08);}
 @media(max-width:880px){
-  .hamburger{display:flex;}
-  .nav-links{
-    position:absolute;top:calc(100% + 12px);left:0;right:0;flex-direction:column;align-items:stretch;gap:4px;
-    padding:14px;border-radius:24px;
-    background:rgba(255,255,255,.85);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
-    border:1px solid var(--glass-border);box-shadow:var(--shadow-deep);
-    opacity:0;transform:translateY(-12px);pointer-events:none;transition:all .35s var(--ease);
-  }
-  .nav-links.open{opacity:1;transform:none;pointer-events:auto;}
-  .nav-links a{padding:13px 18px;}
-  .nav-links a::after{display:none;}
+  .proof-row{grid-template-columns:1fr;}
+  .prod-grid{grid-template-columns:1fr;}
+  .quotes{grid-template-columns:1fr;}
+  .aq-teaser{grid-template-columns:1fr;}
 }
-@media(max-width:880px){.nav-inner{position:relative;}}
 </style>
 </head>
-<body>
-<div class="bg-aura"><span></span><span></span><span></span><span></span></div>
-<div class="bg-grid"></div>
+<body class="page-home">
 
-<!-- ===== NAVBAR ===== -->
-<header class="navbar">
+<!-- NAV -->
+<header class="nav">
   <div class="container">
-    <nav class="nav-inner">
+    <nav class="nav-in">
       <a href="index.html" class="brand">
         <img src="Media/logo_assets/air_purification_association_icon.svg" alt="Air Purification Association logo" />
-        <span class="brand-text">Air Purification Association<small>Unincorporated Nonprofit</small></span>
+        <span><b>Air Purification Association</b><small>Unincorporated Nonprofit</small></span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="donations.html">Donations &amp; Equipment</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="airquality.html">Air Quality Map</a></li>
         <li><a href="founders.html">Founders</a></li>
         <li><a href="donations.html" class="nav-cta">Get Involved</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
   </div>
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
+  <canvas id="airCanvas"></canvas>
+  <div class="hero-glowA"></div><div class="hero-glowB"></div>
   <div class="container">
-    <span class="eyebrow reveal"><span class="pulse-ring"></span>Fresh air, healthier communities</span>
-    <h1 class="reveal">Cleaner indoor air for<br /><span class="gradient-text">every room that needs it</span></h1>
-    <p class="lead reveal">We are an unincorporated nonprofit association putting professional-grade air filtration into classrooms, homes, shelters, and workshops — where clean air matters most.</p>
-
-    <div class="stat-orb reveal">
-      <div class="stat-orb-inner">
-        <div class="stat-label">Crown-jewel impact to date</div>
-        <div class="counter" id="heroCounter" data-target="15.83">0.00</div>
-        <span class="unit">Billion Cubic Feet of Air Cleaned</span>
-      </div>
+    <span class="eyebrow reveal"><span class="dot"></span>Fresh air, healthier communities</span>
+    <h1 class="reveal d1">We put clean air into the rooms that <span class="grad-text">need it most</span></h1>
+    <div class="mega-wrap reveal d2">
+      <div class="mega-label">Crown jewel impact to date</div>
+      <div class="mega-stage" id="megaStage"><div class="mega" id="mega" title="Hover for the live exact count"><span id="megaNum">0.00</span><span class="b" id="megaB">B</span></div></div>
+      <div class="mega-unit">Cubic feet of indoor air cleaned</div>
+      <div class="mega-live"><span class="dot"></span>Live count, hover the number to reveal every digit</div>
     </div>
-
-    <div class="hero-cta reveal">
-      <a href="donations.html" class="btn btn-primary">Donate Equipment →</a>
-      <a href="about.html" class="btn btn-ghost">Our Mission</a>
+    <p class="lead reveal d2">An unincorporated nonprofit association collecting, refurbishing and redistributing professional grade air filtration to classrooms, homes, shelters and workshops.</p>
+    <div class="hero-cta reveal d3">
+      <a href="donations.html" class="btn btn-primary">Donate Equipment</a>
+      <a href="airquality.html" class="btn btn-outline-light">Explore the Air Quality Map</a>
     </div>
   </div>
 </section>
 
-<!-- ===== 3D DONATED ITEMS ===== -->
-<section class="tilt-section">
+<!-- PROOF CHIPS -->
+<div class="proof">
   <div class="container">
-    <h2 class="section-title reveal">The equipment we <span class="gradient-text">put to work</span></h2>
-    <p class="section-sub reveal">Move your cursor across each card — every unit we donate is hand-matched to the space that needs it most.</p>
-    <div class="tilt-grid">
-      <div class="tilt-card reveal" data-tilt>
-        <div class="shine"></div>
-        <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
-        <div class="layer"><h3>Portable Air Filtration</h3><p>High-CFM systems with built-in ionizers and vortex fans for garages, workshops and large open spaces.</p></div>
+    <div class="proof-row">
+      <div class="proof-card reveal"><div class="pn"><span data-count="1.5" data-dec="1" data-suffix="M">0</span></div><div class="pl">Residential room air exchanges</div></div>
+      <div class="proof-card reveal d1"><div class="pn"><span data-count="790" data-suffix="K">0</span></div><div class="pl">Classroom air volumes cleaned</div></div>
+      <div class="proof-card reveal d2"><div class="pn"><span data-count="18">0</span></div><div class="pl">Local nonprofits supported</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="section">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>The equipment we deploy</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">Real units, matched to <span class="grad-text">real rooms</span></h2>
+      <p class="reveal d2">Every machine we accept is checked, cleaned and sent to the space it serves best. Hover any unit to take a closer look.</p>
+    </div>
+    <div class="prod-grid">
+
+      <article class="prod reveal">
+        <div class="prod-media" data-tilt data-tilt-max="7">
+          <span class="prod-tag">Garages and Workshops</span>
+          <div class="frame" data-tilt-inner>
+            <img src="Media/products/alorair.jpg" alt="AlorAir portable air filtration system" onerror="this.onerror=null;this.src='Media/products/alorair.svg';" />
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>AlorAir 850 / 1050 CFM Portable Filtration</h3>
+          <p>A heavy duty air scrubber with a built in ionizer and a strong vortex fan, built for garages and workshops that move a lot of air fast.</p>
+          <div class="chips"><span>850 to 1050 CFM</span><span>Built in ionizer</span><span>Vortex fan</span></div>
+        </div>
+      </article>
+
+      <article class="prod g reveal d1">
+        <div class="prod-media" data-tilt data-tilt-max="7">
+          <span class="prod-tag g">Woodshops</span>
+          <div class="frame" data-tilt-inner>
+            <img src="Media/products/purecare.jpg" alt="Purecare 1050IG tabletop dust collector" onerror="this.onerror=null;this.src='Media/products/purecare.svg';" />
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>Purecare 1050IG Tabletop Dust Collector</h3>
+          <p>Designed specifically for woodshops and workshops, it pulls fine sawdust and particulate straight off the bench before it fills the room.</p>
+          <div class="chips"><span>Tabletop</span><span>Dust collection</span><span>Workshop ready</span></div>
+        </div>
+      </article>
+
+      <article class="prod reveal">
+        <div class="prod-media" data-tilt data-tilt-max="7">
+          <span class="prod-tag">Large Home Rooms</span>
+          <div class="frame" data-tilt-inner>
+            <img src="Media/products/knka.jpg" alt="KNKA HEPA tower air purifier" onerror="this.onerror=null;this.src='Media/products/knka.svg';" />
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>KNKA HEPA Air Purifiers</h3>
+          <p>Whole room HEPA coverage for spaces up to 3,000 sq.ft, built for allergy and pet hair relief with an air quality monitor and quiet operation.</p>
+          <div class="chips"><span>Up to 3000 sq.ft</span><span>Air quality monitor</span><span>Auto and Turbo</span><span>Oil diffuser</span><span>Ultra quiet</span></div>
+        </div>
+      </article>
+
+      <article class="prod g reveal d1">
+        <div class="prod-media" data-tilt data-tilt-max="7">
+          <span class="prod-tag g">Budget and DIY</span>
+          <div class="frame" data-tilt-inner>
+            <img src="Media/products/boxfan.jpg" alt="Box fan paired with MERV 13 filter" onerror="this.onerror=null;this.src='Media/products/boxfan.svg';" />
+          </div>
+        </div>
+        <div class="prod-body">
+          <h3>DIY Box Fan and MERV 13 Kits</h3>
+          <p>A 20 inch box fan paired with a MERV 13 filter, a proven and affordable clean air kit that almost anyone can assemble and run.</p>
+          <div class="chips"><span>20 inch box fan</span><span>MERV 13</span><span>20x20x1</span><span>20x20x2</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- BACKED CLAIMS BENTO -->
+<section class="section tint">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>Backed claims</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">Verified impact, not <span class="grad-text">round numbers</span></h2>
+      <p class="reveal d2">Every figure reflects air actually processed through systems we have deployed in the field.</p>
+    </div>
+    <div class="bento">
+      <div class="tile feature reveal">
+        <div>
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+        </div>
+        <div>
+          <div class="num"><span data-live="compactB">15.83B</span></div>
+          <div class="lab">Cubic feet of indoor air processed through deployed systems, the foundation of every equivalence here.</div>
+        </div>
       </div>
-      <div class="tilt-card green reveal" data-tilt>
-        <div class="shine"></div>
-        <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M5 21c0-7 4-12 14-13C18 16 13 21 5 21z"/><path d="M5 21c2-5 5-8 9-10"/></svg></div>
-        <div class="layer"><h3>Tabletop Dust Collectors</h3><p>Compact collectors that pull fine particulate straight from woodshop and workshop benches.</p></div>
+
+      <div class="tile reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg></div>
+        <div class="num grad"><span data-count="1.5" data-dec="1">0</span>M</div>
+        <div class="lab">Residential room air exchanges</div>
       </div>
-      <div class="tilt-card reveal" data-tilt>
-        <div class="shine"></div>
-        <div class="icon-badge"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/><path d="M8 12h8M12 8v8"/></svg></div>
-        <div class="layer"><h3>HEPA Home Purifiers</h3><p>Whole-room HEPA units covering up to 3,000 sq.ft for allergy, pet-hair and air-quality relief.</p></div>
+
+      <div class="tile green reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 9l9-6 9 6v11a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg></div>
+        <div class="num grad"><span data-count="790" data-suffix="K">0</span></div>
+        <div class="lab">Classroom air volumes</div>
       </div>
-      <div class="tilt-card green reveal" data-tilt>
-        <div class="shine"></div>
-        <div class="icon-badge"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8v8H8z"/></svg></div>
-        <div class="layer"><h3>DIY &amp; Budget Solutions</h3><p>20" box fans paired with MERV-13 filters — affordable, effective clean-air kits anyone can run.</p></div>
+
+      <div class="tile reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8v8H8z"/></svg></div>
+        <div class="num grad"><span data-count="200" data-suffix="K">0</span></div>
+        <div class="lab">Workshop air volumes</div>
+      </div>
+
+      <div class="tile accent-green span2 reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div class="num"><span data-count="250" data-suffix="K">0</span> hrs</div>
+        <div class="lab">Of continuous filtration runtime delivered, about 86 units running nonstop for a full year.</div>
+      </div>
+
+      <div class="tile reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+        <div class="num grad"><span data-count="86">0</span></div>
+        <div class="lab">Units running nonstop for one year</div>
+      </div>
+
+      <div class="tile reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7c-2.5 4.6-9.5 9-9.5 9z"/></svg></div>
+        <div class="num grad">Less</div>
+        <div class="lab">Airborne particulate across homes, classrooms and woodshops</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== BACKED CLAIMS ===== -->
-<section class="claims">
+<!-- SOCIAL / COMMUNITY -->
+<section class="section dark">
   <div class="container">
-    <h2 class="section-title reveal">Backed <span class="gradient-text">claims</span>, verified impact</h2>
-    <p class="section-sub reveal">Every figure below reflects air actually processed through systems we have deployed in the field.</p>
-    <div class="claims-grid">
-      <div class="claim-card featured reveal">
-        <div class="big">15.83 Billion</div>
-        <div class="desc">Cubic feet of indoor air processed through deployed systems — the foundation of every equivalence below.</div>
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>From the community</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">Clean air people can <span class="grad-text">feel</span></h2>
+      <p class="reveal d2">The rooms change, and so do the people in them. A few voices from spaces now running our units.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <span class="mark">&#8220;</span>
+        <p>Our shop used to be a haze of sawdust by noon. The collector keeps the bench clear and my crew stopped coughing through the afternoon.</p>
+        <div class="who"><div class="av">DM</div><div><b>Workshop Owner</b><small>Community woodshop</small></div></div>
       </div>
-      <div class="claim-card reveal">
-        <div class="big">~1.5 Million</div>
-        <div class="desc">Equivalent residential room air exchanges across the homes we serve.</div>
+      <div class="quote reveal d1">
+        <span class="mark">&#8220;</span>
+        <p>We placed a HEPA unit in every classroom that needed one. Parents noticed, and so did our attendance during allergy season.</p>
+        <div class="who"><div class="av" style="background:var(--grad-green)">RT</div><div><b>School Coordinator</b><small>Local elementary</small></div></div>
       </div>
-      <div class="claim-card reveal">
-        <div class="big">~790,000</div>
-        <div class="desc">Equivalent classroom air volumes cleaned for students and teachers.</div>
+      <div class="quote reveal d2">
+        <span class="mark">&#8220;</span>
+        <p>The box fan kits were simple, affordable and made our waiting room feel fresh again. We could not have funded purifiers on our own.</p>
+        <div class="who"><div class="av">SL</div><div><b>Shelter Staff</b><small>Neighborhood shelter</small></div></div>
       </div>
-      <div class="claim-card reveal">
-        <div class="big">~200,000</div>
-        <div class="desc">Equivalent workshop air volumes cleared of fine particulate.</div>
+    </div>
+
+    <div class="join-band reveal">
+      <div>
+        <h3>Have equipment, time or a room that needs cleaner air?</h3>
+        <p>We match donated units to the spaces that need them and redistribute funds to smaller local nonprofits.</p>
       </div>
-      <div class="claim-card reveal">
-        <div class="big">~250,000 hrs</div>
-        <div class="desc">Corresponds to hours of continuous filtration runtime delivered.</div>
-      </div>
-      <div class="claim-card reveal">
-        <div class="big">~86 units</div>
-        <div class="desc">Equivalent to roughly 86 air filtration units operating nonstop for one full year.</div>
-      </div>
-      <div class="claim-card reveal" style="grid-column:span 2;">
-        <div class="big" style="font-size:1.4rem;">Large-scale particulate reduction</div>
-        <div class="desc">Reflects measurable reduction of airborne particulate buildup across homes, classrooms, and woodshop environments alike.</div>
-      </div>
+      <a href="donations.html" class="btn btn-light">Get Involved</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
+<!-- AIR QUALITY TEASER -->
+<section class="section">
   <div class="container">
-    <div class="footer-glass">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="Media/logo_assets/air_purification_association_full_logo.svg" alt="Air Purification Association" />
-          <p>An unincorporated nonprofit association devoted to cleaner indoor environments — one classroom, home, and workshop at a time.</p>
-          <span class="badge-nonprofit">Unincorporated Nonprofit Association</span>
-        </div>
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="donations.html">Donations &amp; Equipment</a>
-          <a href="founders.html">Founders</a>
-        </div>
-        <div class="footer-col">
-          <h4>Our Impact</h4>
-          <a href="index.html">15.83B cu. ft. cleaned</a>
-          <a href="donations.html">18 organizations supported</a>
-          <a href="donations.html">$1,400 redistributed</a>
-        </div>
+    <div class="aq-teaser">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span>New, interactive</span>
+        <h2 class="h-sec" style="margin:14px 0 14px;">See the air, <span class="grad-text">everywhere</span></h2>
+        <p style="color:var(--slate-soft);font-size:1.08rem;">Explore live air quality around the world and check the air in your own neighborhood. Watch how particulate moves, where it builds up, and why clean indoor air matters.</p>
+        <div style="margin-top:26px;"><a href="airquality.html" class="btn btn-primary">Open the Air Quality Map</a></div>
       </div>
-      <div class="footer-bottom">
-        © <span id="year"></span> Air Purification Association. All rights reserved. · Cleaner air, stronger communities.
+      <a href="airquality.html" class="aq-visual reveal d1" aria-label="Open the air quality map">
+        <canvas id="airCanvas2"></canvas>
+        <span class="aq-pin" style="left:30%;top:42%;width:16px;height:16px;background:#79C843;"></span>
+        <span class="aq-pin" style="left:55%;top:30%;width:20px;height:20px;background:#f4a52a;"></span>
+        <span class="aq-pin" style="left:70%;top:58%;width:14px;height:14px;background:#2AB7E6;"></span>
+        <span class="aq-pin" style="left:46%;top:66%;width:22px;height:22px;background:#e2574c;"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="Media/logo_assets/air_purification_association_full_logo.svg" alt="Air Purification Association" />
+        <p>An unincorporated nonprofit association devoted to cleaner indoor environments, one classroom, home and workshop at a time.</p>
+        <span class="foot-badge">Unincorporated Nonprofit Association</span>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a class="fl" href="index.html">Home</a>
+        <a class="fl" href="about.html">About</a>
+        <a class="fl" href="donations.html">Donations and Equipment</a>
+        <a class="fl" href="airquality.html">Air Quality Map</a>
+        <a class="fl" href="founders.html">Founders</a>
+      </div>
+      <div>
+        <h5>Our Impact</h5>
+        <a class="fl" href="index.html"><span data-live="compactB">15.83B</span> cubic feet cleaned</a>
+        <a class="fl" href="donations.html">18 organizations supported</a>
+        <a class="fl" href="donations.html">1,400 dollars redistributed</a>
       </div>
     </div>
+    <div class="foot-bottom">Copyright <span data-year></span> Air Purification Association. Cleaner air, stronger communities.</div>
   </div>
 </footer>
 
+<script src="assets/js/app.js"></script>
 <script>
-/* ===== year ===== */
-document.getElementById('year').textContent=new Date().getFullYear();
+/* ============================================================
+   LIVE HERO COUNTER
+   The value is a pure function of wall-clock time from a fixed
+   anchor, so it is identical for every visitor and keeps rising
+   no matter how often the site is refreshed or redeployed.
 
-/* ===== mobile menu ===== */
-const hamburger=document.getElementById('hamburger');
-const navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');navLinks.classList.remove('open');}));
+     value(t) = BASE + RATE * (now - EPOCH)
 
-/* ===== scroll reveal ===== */
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+   Throughput model (provided):
+     Total CFM  ~ 51,500 cubic feet / minute
+     Total CFS  ~ 858 cubic feet / second   <- RATE
+     Annual CFY ~ 27.0 billion cubic feet / year
+     Monthly    ~ 2.25 billion cubic feet / month
+   At the anchor instant the count is exactly 15.83 billion.
+   ============================================================ */
+(function(){
+  var cont  = document.getElementById('mega');
+  var num   = document.getElementById('megaNum');
+  var bsuf  = document.getElementById('megaB');
+  var stage = document.getElementById('megaStage');
+  if(!cont || !num) return;
 
-/* ===== hero counter ===== */
-const counter=document.getElementById('heroCounter');
-if(counter){
-  const target=parseFloat(counter.dataset.target);
-  let started=false;
-  const run=()=>{
-    if(started)return;started=true;
-    const dur=2200,t0=performance.now();
-    const tick=(now)=>{
-      const p=Math.min((now-t0)/dur,1);
-      const eased=1-Math.pow(1-p,3);
-      counter.textContent=(eased*target).toFixed(2);
-      if(p<1)requestAnimationFrame(tick);else counter.textContent=target.toFixed(2);
-    };
-    requestAnimationFrame(tick);
-  };
-  const co=new IntersectionObserver((en)=>{en.forEach(e=>{if(e.isIntersecting)run();});},{threshold:.4});
-  co.observe(counter);
-}
+  function L(){ return window.APA_LIVE; }                 /* shared model from app.js */
+  function compactStr(){ return L() ? L().compact() : '15.83'; }
+  function fullStr(){ return L() ? L().full() : '15,830,000,000'; }
 
-/* ===== 3D tilt ===== */
-document.querySelectorAll('[data-tilt]').forEach(card=>{
-  const max=12;
-  card.addEventListener('mousemove',(e)=>{
-    const r=card.getBoundingClientRect();
-    const px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
-    const rx=(py-.5)*-2*max, ry=(px-.5)*2*max;
-    card.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
-    card.style.setProperty('--mx',px*100+'%');
-    card.style.setProperty('--my',py*100+'%');
-  });
-  card.addEventListener('mouseleave',()=>{card.style.transform='';});
-});
+  var DIG = '0123456789';
+  /* build a string of a given visible length from the full target,
+     locking digits left to right up to `lockFrac`, scrambling the rest */
+  function build(target, len, lockFrac){
+    var slice = target.slice(0, len);
+    var lock = Math.floor(lockFrac * slice.length);
+    var out = '';
+    for(var i = 0; i < slice.length; i++){
+      var c = slice.charAt(i);
+      if(c < '0' || c > '9'){ out += c; }
+      else if(i < lock){ out += c; }
+      else { out += DIG.charAt((Math.random() * 10) | 0); }
+    }
+    return out;
+  }
+  function easeOut(p){ return 1 - Math.pow(1 - p, 3); }
 
-/* ===== navbar shadow on scroll ===== */
-const nav=document.querySelector('.navbar');
-window.addEventListener('scroll',()=>{nav.style.padding=window.scrollY>20?'8px 0':'14px 0';});
+  var ENTER = 520, LEAVE = 260;
+  var mode = 'intro', animStart = performance.now(), hovered = false;
+
+  function showCompact(){
+    cont.classList.remove('expanded');
+    if(bsuf) bsuf.style.display = '';
+    num.textContent = compactStr();
+  }
+
+  function frame(now){
+    if(mode === 'intro'){
+      var p = Math.min((now - animStart) / 2200, 1);
+      num.textContent = (easeOut(p) * 15.83).toFixed(2);
+      if(p >= 1){ mode = 'compact'; showCompact(); }
+    } else if(mode === 'compact'){
+      if(!hovered) num.textContent = compactStr();
+    } else if(mode === 'enter'){
+      cont.classList.add('expanded');
+      if(bsuf) bsuf.style.display = 'none';
+      var pe = easeOut(Math.min((now - animStart) / ENTER, 1));
+      var target = fullStr();
+      /* width grows from the compact length out to the full length while digits resolve */
+      var len = Math.round(5 + pe * (target.length - 5));
+      num.textContent = build(target, len, pe);
+      if((now - animStart) >= ENTER){ mode = 'expanded'; }
+    } else if(mode === 'expanded'){
+      num.textContent = fullStr();
+    } else if(mode === 'leave'){
+      var pl = Math.min((now - animStart) / LEAVE, 1);
+      var tgt = fullStr();
+      /* collapse: length shrinks back toward the compact width while scrambling */
+      var ln = Math.round(tgt.length - easeOut(pl) * (tgt.length - 6));
+      if(pl < 1){ num.textContent = build(tgt, ln, 0); }
+      else { mode = 'compact'; showCompact(); }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  function inBand(y){
+    var r = (stage || cont).getBoundingClientRect();
+    return y >= r.top - 6 && y <= r.bottom + 6;
+  }
+  window.addEventListener('mousemove', function(ev){
+    if(mode === 'intro') return;
+    var over = inBand(ev.clientY);
+    if(over && !hovered){ hovered = true; mode = 'enter'; animStart = performance.now(); }
+    else if(!over && hovered){ hovered = false; mode = 'leave'; animStart = performance.now(); }
+  }, {passive:true});
+})();
+</script>
+<script>
+/* small secondary particle field for the teaser visual */
+(function(){
+  var c=document.getElementById('airCanvas2'); if(!c||!c.getContext)return;
+  var x=c.getContext('2d'),W,H,p=[];
+  function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  function mk(){return {x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.6,vx:Math.random()*.5+.1,vy:(Math.random()-.5)*.4,a:Math.random()*.6+.2};}
+  function init(){rs();p=[];for(var i=0;i<40;i++)p.push(mk());}
+  function loop(){x.clearRect(0,0,W,H);for(var i=0;i<p.length;i++){var m=p[i];m.x+=m.vx;m.y+=m.vy;if(m.x>W+6){p[i]=mk();p[i].x=-6;}x.beginPath();x.arc(m.x,m.y,m.r,0,6.283);x.fillStyle='rgba(140,210,160,'+m.a+')';x.fill();}requestAnimationFrame(loop);}
+  init();loop();window.addEventListener('resize',init);
+})();
 </script>
 </body>
 </html>

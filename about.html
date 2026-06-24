@@ -3,266 +3,199 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About Us — Air Purification Association</title>
+<title>About | Air Purification Association</title>
 <meta name="description" content="Our mission as an unincorporated nonprofit association dedicated to cleaner indoor environments, and the milestones that brought us here." />
 <link rel="icon" type="image/png" sizes="64x64" href="Media/logo_assets/favicon_64.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="Media/logo_assets/favicon_32.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
 <style>
-:root{
-  --air-blue:#0B63B6;--sky-blue:#2AB7E6;--leaf-green:#1E8E3E;--eco-green:#79C843;--mint:#A8E063;
-  --slate:#1f2a37;--slate-soft:#5f6b7a;--air-white:#f7fbff;
-  --glass-bg:rgba(255,255,255,0.55);--glass-bg-strong:rgba(255,255,255,0.72);
-  --glass-border:rgba(255,255,255,0.65);--shadow-soft:0 10px 40px rgba(11,99,182,0.12);
-  --shadow-deep:0 24px 70px rgba(11,99,182,0.18);--radius:22px;--radius-lg:30px;
-  --ease:cubic-bezier(.22,1,.36,1);--maxw:1200px;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'Inter',Arial,Helvetica,sans-serif;color:var(--slate);background:var(--air-white);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-.bg-aura{position:fixed;inset:0;z-index:-2;overflow:hidden;}
-.bg-aura span{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:drift 22s ease-in-out infinite;}
-.bg-aura span:nth-child(1){width:520px;height:520px;background:radial-gradient(circle,var(--sky-blue),transparent 70%);top:-120px;left:-100px;}
-.bg-aura span:nth-child(2){width:480px;height:480px;background:radial-gradient(circle,var(--mint),transparent 70%);top:30%;right:-140px;animation-delay:-6s;}
-.bg-aura span:nth-child(3){width:560px;height:560px;background:radial-gradient(circle,var(--air-blue),transparent 72%);bottom:-160px;left:25%;animation-delay:-12s;opacity:.32;}
-.bg-aura span:nth-child(4){width:380px;height:380px;background:radial-gradient(circle,var(--eco-green),transparent 70%);bottom:10%;right:20%;animation-delay:-3s;opacity:.4;}
-@keyframes drift{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(40px,-30px) scale(1.08);}66%{transform:translate(-30px,40px) scale(.95);}}
-.bg-grid{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(11,99,182,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(11,99,182,.04) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(ellipse at 50% 0%,#000 30%,transparent 80%);}
-.container{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
-h1,h2,h3{line-height:1.15;letter-spacing:-.02em;font-weight:800;}
-h2.section-title{font-size:clamp(1.9rem,4vw,3rem);text-align:center;margin-bottom:14px;}
-.section-sub{text-align:center;color:var(--slate-soft);max-width:640px;margin:0 auto 54px;font-size:1.08rem;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--air-blue);background:rgba(42,183,230,.12);padding:8px 16px;border-radius:999px;border:1px solid rgba(42,183,230,.25);}
-.gradient-text{background:linear-gradient(100deg,var(--air-blue),var(--sky-blue) 45%,var(--leaf-green));-webkit-background-clip:text;background-clip:text;color:transparent;}
-.pulse-ring{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--eco-green);box-shadow:0 0 0 0 rgba(121,200,67,.6);animation:pulse 2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(121,200,67,.5);}70%{box-shadow:0 0 0 14px rgba(121,200,67,0);}100%{box-shadow:0 0 0 0 rgba(121,200,67,0);}}
-/* navbar */
-.navbar{position:sticky;top:0;z-index:100;padding:14px 0;}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;border-radius:999px;background:rgba(255,255,255,0.6);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border:1px solid var(--glass-border);box-shadow:0 8px 30px rgba(11,99,182,.12), inset 0 1px 0 rgba(255,255,255,.8);position:relative;}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--slate);font-weight:800;}
-.brand img{height:42px;width:auto;display:block;}
-.brand .brand-text{font-size:1rem;line-height:1.1;}
-.brand .brand-text small{display:block;font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-soft);}
-.nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
-.nav-links a{position:relative;text-decoration:none;color:var(--slate);font-weight:600;font-size:.94rem;padding:10px 16px;border-radius:999px;transition:all .3s var(--ease);}
-.nav-links a::after{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--sky-blue),var(--leaf-green));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);border-radius:2px;}
-.nav-links a:hover{background:rgba(42,183,230,.12);color:var(--air-blue);}
-.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
-.nav-links a.active{color:var(--air-blue);}
-.nav-cta{background:linear-gradient(100deg,var(--air-blue),var(--sky-blue))!important;color:#fff!important;box-shadow:0 8px 22px rgba(42,183,230,.4);}
-.nav-cta::after{display:none;}
-.nav-cta:hover{transform:translateY(-2px);filter:brightness(1.05);}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
-.hamburger span{width:26px;height:2.5px;background:var(--slate);border-radius:3px;transition:all .3s var(--ease);}
-.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-/* page header */
-.page-head{padding:60px 0 30px;text-align:center;}
-.page-head h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;margin:20px 0 16px;}
-.page-head p{max-width:640px;margin:0 auto;font-size:1.15rem;color:var(--slate-soft);}
-/* mission blocks */
-.mission{padding:50px 0;}
-.mission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
-.mission-card{padding:38px 32px;border-radius:var(--radius-lg);background:var(--glass-bg);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);border:1px solid var(--glass-border);box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.7);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.mission-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-deep);}
-.mission-card .ic{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;margin-bottom:20px;background:linear-gradient(135deg,var(--air-blue),var(--sky-blue));box-shadow:0 12px 26px rgba(42,183,230,.35);}
-.mission-card.g .ic{background:linear-gradient(135deg,var(--leaf-green),var(--eco-green));box-shadow:0 12px 26px rgba(121,200,67,.35);}
-.mission-card .ic svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;}
-.mission-card h3{font-size:1.3rem;margin-bottom:12px;}
-.mission-card p{color:var(--slate-soft);font-size:1rem;}
-.mission-lead{max-width:780px;margin:0 auto 50px;text-align:center;font-size:1.25rem;line-height:1.7;color:var(--slate);font-weight:500;}
-.mission-lead strong{color:var(--air-blue);}
+.about-hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#eefaf0,#e6f4ff);padding:144px 0 70px;}
+.about-hero .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;}
+.about-hero .blob.a{width:380px;height:380px;background:radial-gradient(circle,var(--mint),transparent 70%);top:-120px;right:-60px;}
+.about-hero .blob.b{width:320px;height:320px;background:radial-gradient(circle,var(--sky),transparent 70%);bottom:-140px;left:-80px;}
+.about-hero .container{position:relative;z-index:2;}
+.about-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin:18px 0 14px;max-width:760px;}
+.about-hero p{max-width:620px;color:var(--slate-soft);font-size:1.12rem;}
+.lead-statement{max-width:840px;margin:0 auto;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.45;color:var(--slate);font-weight:500;}
+.lead-statement b{color:var(--air-blue);}
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px;}
+.mcard{padding:32px;border-radius:var(--r-lg);background:#fff;border:1px solid var(--line);box-shadow:var(--sh-sm);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.mcard:hover{transform:translateY(-6px);box-shadow:var(--sh-md);}
+.mcard .ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:var(--grad-cool);}
+.mcard.g .ic{background:var(--grad-green);}
+.mcard .ic svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;}
+.mcard h3{font-size:1.25rem;margin-bottom:10px;}
+.mcard p{color:var(--slate-soft);font-size:.98rem;}
+
 /* timeline */
-.timeline-section{padding:70px 0 100px;}
-.timeline{position:relative;max-width:860px;margin:0 auto;padding:20px 0;}
-.timeline::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:linear-gradient(180deg,var(--sky-blue),var(--leaf-green));border-radius:3px;opacity:.5;}
-.t-item{position:relative;width:50%;padding:24px 44px;}
-.t-item:nth-child(odd){left:0;text-align:right;}
-.t-item:nth-child(even){left:50%;text-align:left;}
-.t-node{position:absolute;top:30px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--air-blue),var(--sky-blue));border:4px solid var(--air-white);box-shadow:0 0 0 4px rgba(42,183,230,.3), 0 8px 20px rgba(42,183,230,.4);z-index:3;}
-.t-item:nth-child(odd) .t-node{right:-11px;}
-.t-item:nth-child(even) .t-node{left:-11px;}
-.t-card{display:inline-block;text-align:left;padding:26px 26px;border-radius:var(--radius);background:var(--glass-bg-strong);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid var(--glass-border);box-shadow:var(--shadow-soft), inset 0 1px 0 rgba(255,255,255,.7);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
-.t-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-deep);}
-.t-year{display:inline-block;font-size:.8rem;font-weight:800;letter-spacing:.1em;color:#fff;background:linear-gradient(100deg,var(--air-blue),var(--sky-blue));padding:5px 14px;border-radius:999px;margin-bottom:12px;}
-.t-card h3{font-size:1.2rem;margin-bottom:8px;}
-.t-card p{color:var(--slate-soft);font-size:.96rem;}
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
-.reveal.in{opacity:1;transform:none;}
-.t-item.reveal:nth-child(odd){transform:translateX(-40px);}
-.t-item.reveal:nth-child(even){transform:translateX(40px);}
-.t-item.reveal.in{transform:none;}
-/* footer */
-footer{margin-top:40px;padding:60px 0 30px;}
-.footer-glass{border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:48px 40px;background:linear-gradient(135deg,rgba(255,255,255,.65),rgba(225,245,255,.45));backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border:1px solid var(--glass-border);border-bottom:none;box-shadow:var(--shadow-soft);}
-.footer-top{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;}
-.footer-brand{max-width:320px;}
-.footer-brand img{height:48px;margin-bottom:16px;}
-.footer-brand p{color:var(--slate-soft);font-size:.95rem;}
-.footer-col h4{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;color:var(--air-blue);}
-.footer-col a{display:block;text-decoration:none;color:var(--slate);font-size:.95rem;margin-bottom:9px;transition:color .25s;}
-.footer-col a:hover{color:var(--sky-blue);}
-.footer-bottom{text-align:center;margin-top:34px;padding-top:22px;border-top:1px solid rgba(11,99,182,.12);color:var(--slate-soft);font-size:.88rem;}
-.badge-nonprofit{display:inline-block;margin-top:8px;font-size:.78rem;padding:5px 14px;border-radius:999px;background:rgba(121,200,67,.15);color:var(--leaf-green);font-weight:600;border:1px solid rgba(121,200,67,.3);}
+.tl{position:relative;max-width:880px;margin:0 auto;}
+.tl::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:3px;transform:translateX(-50%);background:linear-gradient(180deg,var(--sky),var(--leaf));border-radius:3px;}
+.ti{position:relative;width:50%;padding:18px 46px;}
+.ti:nth-child(odd){left:0;text-align:right;}
+.ti:nth-child(even){left:50%;}
+.tnode{position:absolute;top:30px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--sky);box-shadow:0 0 0 5px rgba(42,183,230,.18);z-index:2;}
+.ti:nth-child(odd) .tnode{right:-9px;}
+.ti:nth-child(even) .tnode{left:-9px;border-color:var(--leaf);box-shadow:0 0 0 5px rgba(30,142,62,.16);}
+.tcard{display:inline-block;text-align:left;padding:24px;border-radius:var(--r);background:#fff;border:1px solid var(--line);box-shadow:var(--sh-sm);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+.tcard:hover{transform:translateY(-5px);box-shadow:var(--sh-md);}
+.tyear{display:inline-block;font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;letter-spacing:.08em;color:#fff;background:var(--grad-cool);padding:5px 13px;border-radius:999px;margin-bottom:12px;}
+.ti:nth-child(even) .tyear{background:var(--grad-green);}
+.tcard h3{font-size:1.16rem;margin-bottom:8px;}
+.tcard p{color:var(--slate-soft);font-size:.95rem;}
+.ti.reveal:nth-child(odd){transform:translateX(-40px);}
+.ti.reveal:nth-child(even){transform:translateX(40px);}
+.ti.reveal.in{transform:none;}
+
+/* values strip */
+.vstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.vbox{text-align:center;padding:28px 18px;border-radius:var(--r);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);}
+.vbox .vn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;background:linear-gradient(100deg,#8fe1ff,#a8e063);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.vbox .vl{color:#9fb4c6;font-size:.9rem;margin-top:8px;}
+
 @media(max-width:880px){
-  .hamburger{display:flex;}
-  .nav-links{position:absolute;top:calc(100% + 12px);left:0;right:0;flex-direction:column;align-items:stretch;gap:4px;padding:14px;border-radius:24px;background:rgba(255,255,255,.85);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border:1px solid var(--glass-border);box-shadow:var(--shadow-deep);opacity:0;transform:translateY(-12px);pointer-events:none;transition:all .35s var(--ease);}
-  .nav-links.open{opacity:1;transform:none;pointer-events:auto;}
-  .nav-links a{padding:13px 18px;}
-  .nav-links a::after{display:none;}
-}
-@media(max-width:720px){
-  .timeline::before{left:18px;}
-  .t-item{width:100%;left:0!important;text-align:left!important;padding:18px 0 18px 52px;}
-  .t-item .t-node{left:7px!important;right:auto!important;}
-  .t-item.reveal:nth-child(odd),.t-item.reveal:nth-child(even){transform:translateY(36px);}
-  .t-item.reveal.in{transform:none;}
+  .mcards{grid-template-columns:1fr;}
+  .vstrip{grid-template-columns:repeat(2,1fr);}
+  .tl::before{left:18px;}
+  .ti{width:100%;left:0!important;text-align:left!important;padding:14px 0 14px 50px;}
+  .ti .tnode{left:9px!important;right:auto!important;}
+  .ti.reveal:nth-child(odd),.ti.reveal:nth-child(even){transform:translateY(34px);}
+  .ti.reveal.in{transform:none;}
 }
 </style>
 </head>
-<body>
-<div class="bg-aura"><span></span><span></span><span></span><span></span></div>
-<div class="bg-grid"></div>
+<body class="page-about">
 
-<header class="navbar">
+<header class="nav">
   <div class="container">
-    <nav class="nav-inner">
+    <nav class="nav-in">
       <a href="index.html" class="brand">
         <img src="Media/logo_assets/air_purification_association_icon.svg" alt="Air Purification Association logo" />
-        <span class="brand-text">Air Purification Association<small>Unincorporated Nonprofit</small></span>
+        <span><b>Air Purification Association</b><small>Unincorporated Nonprofit</small></span>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="donations.html">Donations &amp; Equipment</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="airquality.html">Air Quality Map</a></li>
         <li><a href="founders.html">Founders</a></li>
         <li><a href="donations.html" class="nav-cta">Get Involved</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
   </div>
 </header>
 
-<section class="page-head">
+<section class="about-hero">
+  <div class="blob a"></div><div class="blob b"></div>
   <div class="container">
-    <span class="eyebrow reveal"><span class="pulse-ring"></span>Who we are</span>
-    <h1 class="reveal">Clean air is a <span class="gradient-text">shared responsibility</span></h1>
-    <p class="reveal">The Air Purification Association is an unincorporated nonprofit association built around a simple belief: everyone deserves to breathe clean indoor air, regardless of the room they walk into.</p>
+    <span class="eyebrow reveal"><span class="dot"></span>Who we are</span>
+    <h1 class="reveal d1">Clean air is a <span class="grad-text">shared responsibility</span></h1>
+    <p class="reveal d2">The Air Purification Association is an unincorporated nonprofit association built on one belief: everyone deserves clean indoor air, in every room they walk into.</p>
   </div>
 </section>
 
-<section class="mission">
+<section class="section">
   <div class="container">
-    <p class="mission-lead reveal">As an <strong>unincorporated nonprofit association</strong>, we dedicate our efforts entirely to cleaner indoor environments — collecting, refurbishing, and redistributing professional-grade air filtration to the spaces and communities that need it most.</p>
-    <div class="mission-grid">
-      <div class="mission-card reveal">
+    <p class="lead-statement reveal">As an <b>unincorporated nonprofit association</b>, we dedicate our efforts entirely to cleaner indoor environments, collecting, refurbishing and redistributing professional grade air filtration to the spaces that need it most.</p>
+    <div class="mcards">
+      <div class="mcard reveal">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
         <h3>Our Mission</h3>
-        <p>To measurably improve indoor air quality in homes, classrooms, workshops, and community spaces by putting effective filtration directly into the hands of the people who use those rooms every day.</p>
+        <p>To measurably improve indoor air quality in homes, classrooms, workshops and community spaces by putting effective filtration directly into the hands of the people who use those rooms every day.</p>
       </div>
-      <div class="mission-card g reveal">
+      <div class="mcard g reveal d1">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 21c0-7 4-12 14-13C18 16 13 21 5 21z"/></svg></div>
         <h3>Our Approach</h3>
-        <p>We accept donated and surplus filtration equipment, ensure it works well, and match each unit to the environment it serves best — from HEPA home purifiers to DIY box-fan-and-MERV-13 kits.</p>
+        <p>We accept donated and surplus equipment, make sure it works well, and match each unit to the environment it serves best, from HEPA home purifiers to DIY box fan kits.</p>
       </div>
-      <div class="mission-card reveal">
+      <div class="mcard reveal d2">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7c-2.5 4.6-9.5 9-9.5 9z"/></svg></div>
         <h3>Our Community</h3>
-        <p>Beyond equipment, we channel funds to smaller, hyper-local nonprofits — multiplying our impact through organizations already trusted in their neighborhoods.</p>
+        <p>Beyond equipment, we channel funds to smaller, hyper local nonprofits, multiplying our impact through organizations already trusted in their neighborhoods.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="timeline-section">
+<section class="section tint">
   <div class="container">
-    <h2 class="section-title reveal">Our <span class="gradient-text">journey</span> so far</h2>
-    <p class="section-sub reveal">Milestones that took us from a single donated purifier to billions of cubic feet of cleaner air.</p>
-    <div class="timeline">
-      <div class="t-item reveal">
-        <div class="t-node"></div>
-        <div class="t-card">
-          <span class="t-year">The Beginning</span>
-          <h3>An idea takes shape</h3>
-          <p>Two founders, frustrated by poor indoor air in local classrooms and workshops, begin collecting and refurbishing surplus air purifiers to give away.</p>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="t-node"></div>
-        <div class="t-card">
-          <span class="t-year">First Deployments</span>
-          <h3>Units reach real rooms</h3>
-          <p>The first HEPA purifiers and DIY box-fan kits are placed in homes and community rooms, proving that simple, well-matched equipment makes an immediate difference.</p>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="t-node"></div>
-        <div class="t-card">
-          <span class="t-year">Scaling Up</span>
-          <h3>Workshops &amp; classrooms onboard</h3>
-          <p>High-CFM portable systems and tabletop dust collectors expand our reach into woodshops and schools, dramatically increasing the volume of air processed.</p>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="t-node"></div>
-        <div class="t-card">
-          <span class="t-year">Giving Back</span>
-          <h3>Funding local allies</h3>
-          <p>We begin redistributing funds — ultimately $1,400 across 18 smaller, localized nonprofits — to amplify clean-air work already happening on the ground.</p>
-        </div>
-      </div>
-      <div class="t-item reveal">
-        <div class="t-node"></div>
-        <div class="t-card">
-          <span class="t-year">Today</span>
-          <h3>15.83 billion cubic feet cleaned</h3>
-          <p>Our deployed systems have now processed 15.83 billion cubic feet of indoor air — and we are just getting started.</p>
-        </div>
-      </div>
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>Our journey</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">From one purifier to <span class="grad-text">billions of cubic feet</span></h2>
+      <p class="reveal d2">The milestones that took us from a single donated unit to clean air at scale.</p>
+    </div>
+    <div class="tl">
+      <div class="ti reveal"><div class="tnode"></div><div class="tcard">
+        <span class="tyear">The beginning</span><h3>An idea takes shape</h3>
+        <p>Two founders, frustrated by poor air in local classrooms and workshops, start collecting and refurbishing surplus air purifiers to give away.</p>
+      </div></div>
+      <div class="ti reveal"><div class="tnode"></div><div class="tcard">
+        <span class="tyear">First deployments</span><h3>Units reach real rooms</h3>
+        <p>The first HEPA purifiers and DIY box fan kits land in homes and community rooms, proving that simple, well matched equipment makes an immediate difference.</p>
+      </div></div>
+      <div class="ti reveal"><div class="tnode"></div><div class="tcard">
+        <span class="tyear">Scaling up</span><h3>Workshops and classrooms onboard</h3>
+        <p>High CFM portable systems and tabletop dust collectors expand our reach into woodshops and schools, sharply increasing the volume of air processed.</p>
+      </div></div>
+      <div class="ti reveal"><div class="tnode"></div><div class="tcard">
+        <span class="tyear">Giving back</span><h3>Funding local allies</h3>
+        <p>We begin redistributing funds, ultimately 1,400 dollars across 18 smaller local nonprofits, to amplify clean air work already happening on the ground.</p>
+      </div></div>
+      <div class="ti reveal"><div class="tnode"></div><div class="tcard">
+        <span class="tyear">Today</span><h3>15.83 billion cubic feet cleaned</h3>
+        <p>Our deployed systems have now processed 15.83 billion cubic feet of indoor air, and we are just getting started.</p>
+      </div></div>
     </div>
   </div>
 </section>
 
-<footer>
+<section class="section dark">
   <div class="container">
-    <div class="footer-glass">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="Media/logo_assets/air_purification_association_full_logo.svg" alt="Air Purification Association" />
-          <p>An unincorporated nonprofit association devoted to cleaner indoor environments — one classroom, home, and workshop at a time.</p>
-          <span class="badge-nonprofit">Unincorporated Nonprofit Association</span>
-        </div>
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="donations.html">Donations &amp; Equipment</a>
-          <a href="founders.html">Founders</a>
-        </div>
-        <div class="footer-col">
-          <h4>Our Impact</h4>
-          <a href="index.html">15.83B cu. ft. cleaned</a>
-          <a href="donations.html">18 organizations supported</a>
-          <a href="donations.html">$1,400 redistributed</a>
-        </div>
-      </div>
-      <div class="footer-bottom">© <span id="year"></span> Air Purification Association. All rights reserved. · Cleaner air, stronger communities.</div>
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>What drives us</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">Small effort, <span class="grad-text">measurable air</span></h2>
     </div>
+    <div class="vstrip">
+      <div class="vbox reveal"><div class="vn"><span data-live="compactB">15.83B</span></div><div class="vl">Cubic feet cleaned</div></div>
+      <div class="vbox reveal d1"><div class="vn"><span data-count="18">0</span></div><div class="vl">Nonprofits supported</div></div>
+      <div class="vbox reveal d2"><div class="vn"><span data-count="7">0</span></div><div class="vl">Environment types</div></div>
+      <div class="vbox reveal d3"><div class="vn"><span data-count="250" data-suffix="K">0</span></div><div class="vl">Hours of runtime</div></div>
+    </div>
+    <div class="center" style="margin-top:42px;">
+      <a href="donations.html" class="btn btn-light reveal">See how to help</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="Media/logo_assets/air_purification_association_full_logo.svg" alt="Air Purification Association" />
+        <p>An unincorporated nonprofit association devoted to cleaner indoor environments, one classroom, home and workshop at a time.</p>
+        <span class="foot-badge">Unincorporated Nonprofit Association</span>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a class="fl" href="index.html">Home</a>
+        <a class="fl" href="about.html">About</a>
+        <a class="fl" href="donations.html">Donations and Equipment</a>
+        <a class="fl" href="airquality.html">Air Quality Map</a>
+        <a class="fl" href="founders.html">Founders</a>
+      </div>
+      <div>
+        <h5>Our Impact</h5>
+        <a class="fl" href="index.html"><span data-live="compactB">15.83B</span> cubic feet cleaned</a>
+        <a class="fl" href="donations.html">18 organizations supported</a>
+        <a class="fl" href="donations.html">1,400 dollars redistributed</a>
+      </div>
+    </div>
+    <div class="foot-bottom">Copyright <span data-year></span> Air Purification Association. Cleaner air, stronger communities.</div>
   </div>
 </footer>
 
-<script>
-document.getElementById('year').textContent=new Date().getFullYear();
-const hamburger=document.getElementById('hamburger');const navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');navLinks.classList.toggle('open');});
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');navLinks.classList.remove('open');}));
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const nav=document.querySelector('.navbar');
-window.addEventListener('scroll',()=>{nav.style.padding=window.scrollY>20?'8px 0':'14px 0';});
-</script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" role="img" aria-label="Purecare 1050IG tabletop dust collector">
+  <defs>
+    <linearGradient id="p_bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eafaef"/><stop offset="1" stop-color="#e3f3ff"/>
+    </linearGradient>
+    <linearGradient id="p_body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8edf1"/><stop offset="1" stop-color="#c4d0d9"/>
+    </linearGradient>
+    <linearGradient id="p_top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E8E3E"/><stop offset="1" stop-color="#176d30"/>
+    </linearGradient>
+  </defs>
+  <rect width="440" height="360" rx="26" fill="url(#p_bg)"/>
+  <ellipse cx="220" cy="312" rx="150" ry="20" fill="#0c1722" opacity="0.12"/>
+  <!-- table edge -->
+  <rect x="60" y="288" width="320" height="8" rx="4" fill="#cdd9e2"/>
+  <!-- main box -->
+  <rect x="120" y="128" width="200" height="160" rx="16" fill="url(#p_body)"/>
+  <rect x="120" y="128" width="200" height="160" rx="16" fill="none" stroke="#aebcc7" stroke-width="2"/>
+  <!-- top intake grille -->
+  <rect x="120" y="100" width="200" height="34" rx="14" fill="url(#p_top)"/>
+  <g stroke="#0d5a26" stroke-width="4" opacity="0.6">
+    <line x1="140" y1="117" x2="300" y2="117"/>
+    <line x1="140" y1="125" x2="300" y2="125"/>
+    <line x1="140" y1="109" x2="300" y2="109"/>
+  </g>
+  <!-- fan circle -->
+  <circle cx="220" cy="206" r="52" fill="#eef3f6"/>
+  <circle cx="220" cy="206" r="52" fill="none" stroke="#aebcc7" stroke-width="3"/>
+  <g fill="#79C843">
+    <path d="M220 206 L220 160 q26 6 30 34 z"/>
+    <path d="M220 206 L260 230 q-18 22 -44 14 z"/>
+    <path d="M220 206 L178 230 q-10 -26 14 -42 z"/>
+  </g>
+  <circle cx="220" cy="206" r="10" fill="#1E8E3E"/>
+  <!-- knobs -->
+  <circle cx="150" cy="266" r="9" fill="#1E8E3E"/>
+  <circle cx="150" cy="266" r="9" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+  <rect x="172" y="260" width="48" height="12" rx="6" fill="#cdd9e2"/>
+  <rect x="172" y="260" width="30" height="12" rx="6" fill="#2AB7E6"/>
+  <circle cx="290" cy="266" r="6" fill="#79C843"/>
+  <!-- dust being pulled in -->
+  <g fill="#9aa7b2">
+    <circle cx="150" cy="78" r="3"/><circle cx="186" cy="68" r="2.4"/><circle cx="226" cy="72" r="3.4"/>
+    <circle cx="262" cy="66" r="2.2"/><circle cx="296" cy="80" r="3"/>
+  </g>
+  <g stroke="#1E8E3E" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55">
+    <path d="M150 86 q4 8 0 14"/><path d="M226 82 q5 8 0 14"/><path d="M296 88 q4 8 0 12"/>
+  </g>
+</svg>

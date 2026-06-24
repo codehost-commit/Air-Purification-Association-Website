@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Air Quality Map | Air Purification Association</title>
+<meta name="description" content="Explore live air quality around the world and check the air in your own neighborhood. Live AQI, particulate and pollutant data." />
+<link rel="icon" type="image/png" sizes="64x64" href="Media/logo_assets/favicon_64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<style>
+.page-aq{background:linear-gradient(180deg,#0c1b2a,#0f2538 30%,#0c1b2a);}
+.aq-hero{position:relative;overflow:hidden;color:#eaf4fb;padding:132px 0 40px;}
+#flowCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.7;}
+.aq-hero .container{position:relative;z-index:2;}
+.aq-hero .eyebrow{color:var(--mint);background:rgba(168,224,99,.12);border-color:rgba(168,224,99,.28);}
+.aq-hero h1{color:#fff;font-size:clamp(2rem,5vw,3.2rem);margin:16px 0 12px;max-width:740px;}
+.aq-hero p{color:#a9c2d4;max-width:600px;font-size:1.08rem;}
+
+.aq-wrap{position:relative;z-index:2;padding-bottom:90px;}
+.aq-grid{display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start;}
+
+/* local panel */
+.panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);padding:26px;backdrop-filter:blur(12px);color:#dCEbf7;}
+.panel h3{color:#fff;font-size:1.1rem;margin-bottom:4px;}
+.panel .sub{color:#8fa6b8;font-size:.86rem;margin-bottom:18px;}
+.gauge{position:relative;width:200px;height:200px;margin:6px auto 10px;}
+.gauge svg{transform:rotate(135deg);}
+.gauge .track{fill:none;stroke:rgba(255,255,255,.1);stroke-width:16;stroke-linecap:round;}
+.gauge .arc{fill:none;stroke:#27c06a;stroke-width:16;stroke-linecap:round;transition:stroke-dashoffset 1s var(--ease),stroke 1s var(--ease);}
+.gauge-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.gauge-center .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3rem;line-height:1;color:#27c06a;}
+.gauge-center .u{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#8fa6b8;margin-top:2px;}
+.gauge-cat{text-align:center;font-weight:600;font-size:.96rem;margin-bottom:4px;}
+.local-place{text-align:center;color:#9fb4c6;font-size:.9rem;margin-bottom:18px;}
+.controls{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.controls select{width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#eaf4fb;font-family:inherit;font-size:.92rem;}
+.controls select option{color:#0c1b2a;}
+.btn-geo{width:100%;justify-content:center;background:var(--grad-cool);color:#fff;border:none;}
+.pollutants{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.poll{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:10px 12px;}
+.poll .pk{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#8fa6b8;}
+.poll .pv{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#fff;font-size:1rem;}
+.poll .pv small{color:#8fa6b8;font-weight:400;font-size:.7rem;}
+
+/* map */
+.map-card{border-radius:var(--r-lg);overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:var(--sh-lg);}
+#worldmap{height:560px;width:100%;background:#0c1b2a;}
+.leaflet-container{font-family:'Inter',sans-serif;}
+.mp{min-width:170px;}
+.mp-h{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#0c1b2a;font-size:1rem;}
+.mp-aqi{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;line-height:1.1;}
+.mp-aqi small{font-size:.7rem;color:#5a6776;font-weight:500;}
+.mp-cat{display:inline-block;font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px;margin:4px 0 8px;}
+.mp-row{display:flex;justify-content:space-between;font-size:.82rem;color:#5a6776;padding:2px 0;}
+.mp-row b{color:#1f2a37;}
+
+/* legend */
+.legend{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;}
+.legend .lg{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:6px 14px;font-size:.82rem;color:#cfe0ed;}
+.legend .sw{width:13px;height:13px;border-radius:50%;}
+
+/* explainer (light section) */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.why{padding:30px;border-radius:var(--r-lg);background:#fff;border:1px solid var(--line);box-shadow:var(--sh-sm);}
+.why .ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:16px;background:var(--grad-cool);}
+.why.g .ico{background:var(--grad-green);}
+.why .ico svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;}
+.why h3{font-size:1.15rem;margin-bottom:8px;}
+.why p{color:var(--slate-soft);font-size:.96rem;}
+
+@media(max-width:880px){
+  .aq-grid{grid-template-columns:1fr;}
+  #worldmap{height:440px;}
+  .why-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body class="page-aq">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="container">
+    <nav class="nav-in">
+      <a href="index.html" class="brand">
+        <img src="Media/logo_assets/air_purification_association_icon.svg" alt="Air Purification Association logo" />
+        <span><b>Air Purification Association</b><small>Unincorporated Nonprofit</small></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="donations.html">Donations</a></li>
+        <li><a href="airquality.html" class="active">Air Quality Map</a></li>
+        <li><a href="founders.html">Founders</a></li>
+        <li><a href="donations.html" class="nav-cta">Get Involved</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="aq-hero">
+  <canvas id="flowCanvas"></canvas>
+  <div class="container">
+    <span class="eyebrow reveal"><span class="dot"></span>Live air quality</span>
+    <h1 class="reveal d1">See the air around you, and around the <span class="grad-text" style="background:linear-gradient(100deg,#8fe1ff,#a8e063);-webkit-background-clip:text;background-clip:text;color:transparent;">world</span></h1>
+    <p class="reveal d2">Live US Air Quality Index and pollutant readings, updated from open monitoring data. Check your own neighborhood, then explore how air quality shifts across major cities.</p>
+  </div>
+</section>
+
+<!-- MAP + LOCAL -->
+<div class="aq-wrap">
+  <div class="container">
+    <div class="aq-grid">
+
+      <!-- LOCAL PANEL -->
+      <aside class="panel reveal">
+        <h3>Check your local air</h3>
+        <div class="sub">Live US AQI and pollutant levels</div>
+        <div class="gauge">
+          <svg viewBox="0 0 200 200" width="200" height="200">
+            <circle class="track" cx="100" cy="100" r="80"
+              style="stroke-dasharray:376.99; stroke-dashoffset:94.25;"></circle>
+            <circle class="arc" id="gaugeArc" cx="100" cy="100" r="80"
+              style="stroke-dasharray:502.65; stroke-dashoffset:502.65;"></circle>
+          </svg>
+          <div class="gauge-center">
+            <div class="v" id="gaugeVal">--</div>
+            <div class="u">US AQI</div>
+          </div>
+        </div>
+        <div class="gauge-cat" id="gaugeCat">Loading</div>
+        <div class="local-place" id="localPlace">Loading ...</div>
+        <div class="controls">
+          <select id="cityPicker" aria-label="Pick a city"></select>
+          <button class="btn btn-geo" id="geoBtn">Use my location</button>
+        </div>
+        <div class="pollutants" id="pollutants"></div>
+      </aside>
+
+      <!-- WORLD MAP -->
+      <div class="reveal d1">
+        <div class="map-card"><div id="worldmap"></div></div>
+        <div class="legend">
+          <span class="lg"><span class="sw" style="background:#27c06a"></span>Good 0 to 50</span>
+          <span class="lg"><span class="sw" style="background:#f4c025"></span>Moderate 51 to 100</span>
+          <span class="lg"><span class="sw" style="background:#f08a24"></span>Sensitive 101 to 150</span>
+          <span class="lg"><span class="sw" style="background:#e2574c"></span>Unhealthy 151 to 200</span>
+          <span class="lg"><span class="sw" style="background:#9b59b6"></span>Very unhealthy 201 to 300</span>
+          <span class="lg"><span class="sw" style="background:#7e2230"></span>Hazardous 301 plus</span>
+        </div>
+        <p style="color:#7e93a5;font-size:.82rem;margin-top:14px;">Marker size scales with the local index. Hover or tap a city for its particulate breakdown. Data from the Open-Meteo air quality service.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS -->
+<section class="section" style="background:#f7fbff;">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow reveal"><span class="dot"></span>Why indoor air matters</span>
+      <h2 class="h-sec reveal d1" style="margin-top:14px;">Outdoor air finds its way <span class="grad-text">inside</span></h2>
+      <p class="reveal d2">People spend most of their day indoors, where particulate can concentrate. The right filtration turns a problem room into a healthy one.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <h3>Fine particulate, PM2.5</h3>
+        <p>Tiny particles from traffic, smoke and dust travel deep into the lungs. HEPA filtration captures them before people breathe them in.</p>
+      </div>
+      <div class="why g reveal d1">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+        <h3>Air exchanges per hour</h3>
+        <p>The faster a room cycles its air through a filter, the cleaner it stays. Matching the right unit to room size is the whole game.</p>
+      </div>
+      <div class="why reveal d2">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 21c0-7 4-12 14-13C18 16 13 21 5 21z"/></svg></div>
+        <h3>Workshops and woodshops</h3>
+        <p>Sawdust and fine debris build up fast. Dust collectors and scrubbers keep the air clear where tools throw the most particulate.</p>
+      </div>
+    </div>
+    <div class="center" style="margin-top:42px;">
+      <a href="donations.html" class="btn btn-primary reveal">See the equipment we deploy</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="Media/logo_assets/air_purification_association_full_logo.svg" alt="Air Purification Association" />
+        <p>An unincorporated nonprofit association devoted to cleaner indoor environments, one classroom, home and workshop at a time.</p>
+        <span class="foot-badge">Unincorporated Nonprofit Association</span>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a class="fl" href="index.html">Home</a>
+        <a class="fl" href="about.html">About</a>
+        <a class="fl" href="donations.html">Donations and Equipment</a>
+        <a class="fl" href="airquality.html">Air Quality Map</a>
+        <a class="fl" href="founders.html">Founders</a>
+      </div>
+      <div>
+        <h5>Our Impact</h5>
+        <a class="fl" href="index.html"><span data-live="compactB">15.83B</span> cubic feet cleaned</a>
+        <a class="fl" href="donations.html">18 organizations supported</a>
+        <a class="fl" href="donations.html">1,400 dollars redistributed</a>
+      </div>
+    </div>
+    <div class="foot-bottom">Copyright <span data-year></span> Air Purification Association. Cleaner air, stronger communities.</div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="assets/js/airmap.js"></script>
+<script>
+/* airflow canvas in the hero: streaming clean and dirty motes */
+(function(){
+  var c=document.getElementById('flowCanvas'); if(!c||!c.getContext)return;
+  var x=c.getContext('2d'),W,H,p=[];
+  function rs(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  function mk(){var clean=Math.random()>.5;return {x:Math.random()*W,y:Math.random()*H,r:Math.random()*2.4+.6,vx:Math.random()*1.1+.3,vy:(Math.random()-.5)*.3,clean:clean,a:Math.random()*.6+.2};}
+  function init(){rs();p=[];for(var i=0;i<90;i++)p.push(mk());}
+  function loop(){x.clearRect(0,0,W,H);for(var i=0;i<p.length;i++){var m=p[i];m.x+=m.vx;m.y+=m.vy;if(m.x>W+8){p[i]=mk();p[i].x=-8;}x.beginPath();x.arc(m.x,m.y,m.r,0,6.283);x.fillStyle=m.clean?'rgba(130,210,150,'+m.a+')':'rgba(150,180,205,'+(m.a*.7)+')';x.fill();}requestAnimationFrame(loop);}
+  init();loop();window.addEventListener('resize',init);
+})();
+</script>
+</body>
+</html>
