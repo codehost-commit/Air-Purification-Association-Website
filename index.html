@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Air Purification Association | Cleaner Indoor Air for Every Community</title>
-<meta name="description" content="An unincorporated nonprofit association putting professional grade air filtration into classrooms, homes, shelters and workshops. 15.83 billion cubic feet of air cleaned." />
+<meta name="description" content="An unincorporated nonprofit association putting professional grade air filtration into classrooms, homes, shelters and workshops. Billions of cubic feet of air cleaned." />
 <link rel="icon" type="image/png" sizes="64x64" href="Media/logo_assets/favicon_64.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -408,7 +408,8 @@
   function frame(now){
     if(mode === 'intro'){
       var p = Math.min((now - animStart) / 2200, 1);
-      num.textContent = (easeOut(p) * 15.83).toFixed(2);
+      var introTarget = parseFloat(compactStr());
+      num.textContent = (easeOut(p) * introTarget).toFixed(2);
       if(p >= 1){ mode = 'compact'; showCompact(); }
     } else if(mode === 'compact'){
       if(!hovered) num.textContent = compactStr();
