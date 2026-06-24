@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 360" role="img" aria-label="Compact HEPA air purifier for small rooms">
+  <defs>
+    <linearGradient id="l_bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef6ff"/><stop offset="1" stop-color="#e9f9ef"/>
+    </linearGradient>
+    <linearGradient id="l_body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="0.5" stop-color="#f4f8fb"/><stop offset="1" stop-color="#dde7ee"/>
+    </linearGradient>
+    <linearGradient id="l_top" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2AB7E6"/><stop offset="1" stop-color="#0B63B6"/>
+    </linearGradient>
+    <radialGradient id="l_vent" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#11202c"/><stop offset="1" stop-color="#33424f"/>
+    </radialGradient>
+  </defs>
+  <rect width="440" height="360" rx="26" fill="url(#l_bg)"/>
+  <ellipse cx="220" cy="318" rx="120" ry="18" fill="#0c1722" opacity="0.12"/>
+
+  <!-- compact rounded cylinder body -->
+  <rect x="148" y="118" width="144" height="180" rx="56" fill="url(#l_body)"/>
+  <rect x="148" y="118" width="144" height="180" rx="56" fill="none" stroke="#c2d0db" stroke-width="2"/>
+
+  <!-- circular top clean-air vent -->
+  <ellipse cx="220" cy="132" rx="62" ry="22" fill="url(#l_vent)"/>
+  <ellipse cx="220" cy="130" rx="62" ry="22" fill="none" stroke="#5b6b78" stroke-width="2"/>
+  <g fill="none" stroke="#0B63B6" stroke-width="2.4" opacity="0.55">
+    <ellipse cx="220" cy="130" rx="46" ry="15"/>
+    <ellipse cx="220" cy="130" rx="30" ry="10"/>
+    <ellipse cx="220" cy="130" rx="14" ry="5"/>
+  </g>
+
+  <!-- control button on top rim -->
+  <circle cx="220" cy="156" r="7" fill="#2AB7E6"/>
+  <circle cx="220" cy="156" r="7" fill="none" stroke="#fff" stroke-width="2" opacity="0.6"/>
+
+  <!-- 360 mesh intake on lower body (dot grille) -->
+  <g fill="#aebcc8">
+    <!-- rows of dots -->
+    <g>
+      <circle cx="170" cy="206" r="2.4"/><circle cx="186" cy="206" r="2.4"/><circle cx="202" cy="206" r="2.4"/><circle cx="218" cy="206" r="2.4"/><circle cx="234" cy="206" r="2.4"/><circle cx="250" cy="206" r="2.4"/><circle cx="266" cy="206" r="2.4"/>
+    </g>
+    <g>
+      <circle cx="170" cy="226" r="2.4"/><circle cx="186" cy="226" r="2.4"/><circle cx="202" cy="226" r="2.4"/><circle cx="218" cy="226" r="2.4"/><circle cx="234" cy="226" r="2.4"/><circle cx="250" cy="226" r="2.4"/><circle cx="266" cy="226" r="2.4"/>
+    </g>
+    <g>
+      <circle cx="170" cy="246" r="2.4"/><circle cx="186" cy="246" r="2.4"/><circle cx="202" cy="246" r="2.4"/><circle cx="218" cy="246" r="2.4"/><circle cx="234" cy="246" r="2.4"/><circle cx="250" cy="246" r="2.4"/><circle cx="266" cy="246" r="2.4"/>
+    </g>
+    <g>
+      <circle cx="170" cy="266" r="2.4"/><circle cx="186" cy="266" r="2.4"/><circle cx="202" cy="266" r="2.4"/><circle cx="218" cy="266" r="2.4"/><circle cx="234" cy="266" r="2.4"/><circle cx="250" cy="266" r="2.4"/><circle cx="266" cy="266" r="2.4"/>
+    </g>
+  </g>
+
+  <!-- base accent ring -->
+  <rect x="160" y="284" width="120" height="12" rx="6" fill="#dde7ee"/>
+
+  <!-- rising clean air swirls -->
+  <g stroke="#79C843" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7">
+    <path d="M206 104 q-8 -18 6 -34"/>
+    <path d="M234 104 q8 -16 -4 -32"/>
+    <path d="M220 98 q0 -16 0 -30"/>
+  </g>
+</svg>
