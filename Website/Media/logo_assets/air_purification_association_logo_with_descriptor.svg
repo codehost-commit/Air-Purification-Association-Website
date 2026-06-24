@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="700" viewBox="0 0 1800 700" role="img" aria-labelledby="title desc">
+  <title id="title">Air Purification Association logo with descriptor</title>
+  <desc id="desc">Logo with blue airflow and green leaf icon, organization name, and unincorporated nonprofit association descriptor.</desc>
+
+  <defs>
+    <linearGradient id="airBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#075499"/>
+      <stop offset="0.55" stop-color="#0B63B6"/>
+      <stop offset="1" stop-color="#2AB7E6"/>
+    </linearGradient>
+    <linearGradient id="leafGreen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#1E8E3E"/>
+      <stop offset="0.65" stop-color="#79C843"/>
+      <stop offset="1" stop-color="#A8E063"/>
+    </linearGradient>
+    <linearGradient id="ringBlend" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B63B6"/>
+      <stop offset="0.52" stop-color="#2AB7E6"/>
+      <stop offset="0.54" stop-color="#79C843"/>
+      <stop offset="1" stop-color="#1E8E3E"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#000000" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <g transform="translate(88 145) scale(0.98)">
+
+  <g id="apa-icon">
+    <!-- open circular purification path -->
+    <path d="M54 229 C12 156 36 69 113 35 C186 3 271 31 309 104" fill="none" stroke="url(#airBlue)" stroke-width="22" stroke-linecap="round"/>
+    <path d="M299 111 C335 188 301 277 219 309 C147 337 66 312 28 244" fill="none" stroke="url(#leafGreen)" stroke-width="22" stroke-linecap="round"/>
+
+    <!-- clean air currents -->
+    <path d="M64 150 C112 111 176 138 220 142 C260 145 291 126 313 92 C299 145 261 177 211 176 C164 175 109 140 64 181 Z" fill="url(#airBlue)" opacity="0.96"/>
+    <path d="M52 199 C98 162 153 174 201 190 C241 203 281 194 309 161 C298 203 262 230 215 229 C162 228 116 193 52 224 Z" fill="#2AB7E6" opacity="0.88"/>
+    <path d="M83 108 C126 81 178 91 218 110 C247 124 277 120 302 94" fill="none" stroke="#2AB7E6" stroke-width="12" stroke-linecap="round" opacity="0.92"/>
+
+    <!-- environmental leaf -->
+    <path d="M92 252 C134 252 173 227 202 197 C226 172 246 155 282 151 C269 207 233 265 175 282 C136 293 105 279 83 258 C86 256 89 254 92 252 Z" fill="url(#leafGreen)"/>
+    <path d="M101 257 C143 242 178 221 223 182" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+    <path d="M145 238 C153 229 160 219 167 207" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  </g>
+  </g>
+  <g transform="translate(492 0)">
+    <text x="0" y="295" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="700" letter-spacing="-2" fill="#0B63B6">Air Purification</text>
+    <text x="2" y="399" font-family="Arial, Helvetica, sans-serif" font-size="74" font-weight="500" letter-spacing="18" fill="#1E8E3E">Association</text>
+    <text x="5" y="475" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="4" fill="#5f6b7a">UNINCORPORATED NONPROFIT ASSOCIATION</text>
+    <path d="M147 194 C167 177 190 172 213 176 C205 199 190 215 165 220 C164 207 158 198 147 194 Z" fill="url(#leafGreen)"/>
+  </g>
+</svg>
